@@ -33,6 +33,7 @@ public class TestLevel extends GameLevel{
 		
 		GameEntity e = new PGWalker("heyo", 800, 500, mouse);
 		e.setCOR(1); // has to be 1 for portals to work properly, why?	
+		e.setGravity(true);
 		addEntity(e, 0);
 		e.setWallBounce(false);
 		setTrackee(e);

@@ -123,7 +123,8 @@ public class GameEnvironment implements Runnable, Cloneable{
 		
 		// updates entity locations
 		for(GameEntity e : myEntities){	
-			e.setYAccel(gravity);
+			if(e.getGravity())
+				e.setYAccel(gravity);
 			e.update();
 		}
 		

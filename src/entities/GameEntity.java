@@ -22,6 +22,7 @@ public class GameEntity implements Cloneable{
 	boolean recordPath; // if the path of this entity is to recorded by the environment
 	boolean drawPath; // draws a simple black line of the path of the entity
 	boolean drawTail; // draws a comet-like tail on the entity
+	boolean gravity; // if entity is affected by environment's gravity
 	
 	// all in SI Units (if ticks per second equals 100)
 	double mass; // never negative, please. stuff will break
@@ -69,6 +70,7 @@ public class GameEntity implements Cloneable{
 		offScreenRemove = true;
 		offScreenWrap = false;
 		wallBounce = false;
+		gravity = false;
 		mass = 0;
 		xVel = 0;
 		yVel = 0;
@@ -127,6 +129,7 @@ public class GameEntity implements Cloneable{
 	public boolean recordPath(){return recordPath;}
 	public boolean drawPath(){return drawPath;}
 	public boolean drawTail(){return drawTail;}
+	public boolean getGravity(){return gravity;}
 	public GameBlock getContactBlock(){return contactBlock;}
 	public int getContactBlockSideNum(){return contactBlockSideNum;}
 	public int getContactBlockVertexNum(){return contactBlockVertexNum;}
@@ -241,6 +244,7 @@ public class GameEntity implements Cloneable{
 	public void setRecordPath(boolean b){recordPath = b;}
 	public void setDrawPath(boolean b){drawPath = b;}
 	public void setDrawTail(boolean b){drawTail = b;}
+	public void setGravity(boolean b) {gravity = b;}
 	public long resetLifetime(){long temp = lifetime; lifetime = 0; return temp;}
 	public void setInvulnerable(boolean b){invulnerable = b;}
 	public void setContactBlock(GameBlock b){contactBlock = b;}
