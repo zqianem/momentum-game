@@ -24,7 +24,7 @@ public class TestLevel extends GameLevel{
 		((StMV2) e2).setStock(5);
 		addEntity(e2, 0);
 		e2.setWallBounce(false);
-		setTrackee(e2);
+		myTrackees.add(e2);
 		
 		Mouse mouse = new Mouse();
 		addEntity(mouse, 0);
@@ -36,7 +36,7 @@ public class TestLevel extends GameLevel{
 		e.setGravity(true);
 		addEntity(e, 0);
 		e.setWallBounce(false);
-		setTrackee(e);
+		myTrackees.add(e);
 		
 		
 		Point2D.Double p1 = new Point2D.Double(10, 10);

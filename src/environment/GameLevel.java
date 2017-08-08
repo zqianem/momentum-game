@@ -23,7 +23,47 @@ public class GameLevel implements Cloneable{
 	Map<Long, List<GameEvent>> myEventTimeMap;	// time and events that appear at that tick
 	Map<Long, List<GameBlock>> myBlockTimeMap;
 	Stack<GameEntity> myInputEntities;
-	GameEntity trackee;
+	
+	public class Trackees implements Cloneable{
+		Set<GameEntity> mySet;
+		
+		public Trackees() {
+			mySet = new HashSet<GameEntity>();
+		}
+		
+		public void add(GameEntity e) {
+			mySet.add(e);
+		}
+		
+		public boolean remove(GameEntity e) {
+			return mySet.remove(e);
+		}
+		
+		public double getAVGXCoord() {
+			double toReturn = 0;
+			for(GameEntity e : mySet)
+				toReturn += e.getXCoord();
+			return toReturn / mySet.size();
+		}
+		
+		public double getAVGYCoord() {
+			double toReturn = 0;
+			for(GameEntity e : mySet)
+				toReturn += e.getYCoord();
+			return toReturn / mySet.size();
+		}
+		
+		public Trackees clone() {
+			Trackees c = new Trackees();
+			
+			for(GameEntity e : mySet)
+				c.mySet.add(e);
+			
+			return c;
+		}
+	}
+	
+	Trackees myTrackees;
 	
 	int score;	// keep track of anything, really, displayed in bottom right corner
 	boolean displayScore;
@@ -39,6 +79,7 @@ public class GameLevel implements Cloneable{
 		myEventTimeMap = new HashMap<Long, List<GameEvent>>();
 		myBlockTimeMap = new HashMap<Long, List<GameBlock>>();
 		myInputEntities = new Stack<GameEntity>();
+		myTrackees = new Trackees();
 		score = 0;
 		displayScore = false;
 		
@@ -65,8 +106,7 @@ public class GameLevel implements Cloneable{
 		return myBlockTimeMap.get(new Long(t));
 	}
 	
-	public GameEntity getTrackee(){return trackee;}
-	public void setTrackee(GameEntity e){trackee = e;}
+	public Trackees getTrackees(){return myTrackees;}
 	public double getZoom(){return zoom;}
 	public double getXOffset(){return xOffset;}
 	public double getYOffset(){return yOffset;}
@@ -172,8 +212,7 @@ public class GameLevel implements Cloneable{
 		
 		c.environmentSize = new Dimension(environmentSize.width, environmentSize.height);
 		
-		if(trackee != null)
-			c.trackee = trackee.clone();
+		c.myTrackees = myTrackees.clone();
 		
 		return c;
 	}

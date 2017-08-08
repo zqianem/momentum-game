@@ -28,7 +28,7 @@ public class SpeedrunWIP extends GameLevel{
 		e.setYAccel(400);
 		addEntity(e, 0);
 		
-		setTrackee(e);
+		myTrackees.add(e);
 		
 		for(int i=0; i<100; i++){
 			double x0 = Math.random()*environmentSize.getWidth();

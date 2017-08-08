@@ -20,6 +20,7 @@ import javax.swing.*;
 import blocks.GameBlock;
 import entities.*;
 import environment.*;
+import environment.GameLevel.Trackees;
 import optimization.GameEnvironmentTripleBuffer;
 
 @SuppressWarnings("serial")
@@ -102,7 +103,7 @@ public class MainGraphics extends JLayeredPane implements Runnable{
 	
 	private void updateDisplaySettingsFromTrackee(){
 		
-		GameEntity e = myEnviron.getLevel().getTrackee();
+		Trackees e = myEnviron.getLevel().getTrackees();
 		
 		if(e == null)
 			return;
@@ -112,13 +113,13 @@ public class MainGraphics extends JLayeredPane implements Runnable{
 		double screenW = RES.getWidth();
 		double screenH = RES.getHeight();
 		
-		double xOffset = e.getXCoord() - screenW/2/zoom;
+		double xOffset = e.getAVGXCoord() - screenW/2/zoom;
 		if(xOffset < 0)
 			xOffset = 0;
 		else if(xOffset > width-screenW/zoom)
 			xOffset = width-screenW/zoom;
 		
-		double yOffset = e.getYCoord() - screenH/2/zoom;
+		double yOffset = e.getAVGYCoord() - screenH/2/zoom;
 		if(yOffset < 0)
 			yOffset = 0;
 		else if(yOffset > height - screenH/zoom)
