@@ -348,7 +348,14 @@ public class MainGraphics extends JLayeredPane implements Runnable{
 				b = " " + b;
 			String b2 = "Block Sides: " + b;
 			
+			GameEntity t = (GameEntity) myEnviron.getLevel().getTrackees().getSet().toArray()[1];
 			
+//			if(pixelsOffscreen(t) >= 0)
+//				g2.drawString("Trackee is off screen", xPos-400, yPos);
+//			else
+//				g2.drawString("Trackee is on screen", xPos-400, yPos);
+			
+			g2.drawString(""+pixelsOffscreen(t), xPos-400, yPos);
 			
 			g2.drawString(f2, xPos, yPos);
 			g2.drawString(e2, xPos-60, yPos + 25);
@@ -403,6 +410,29 @@ public class MainGraphics extends JLayeredPane implements Runnable{
 		for(Point p : stars){
 			g2.fillRect(processX(p.getX()), processY(p.getY()), processL(7), processL(7));
 		}
+	}
+	 
+	//closest distance entity is to edge of screen, positive values indicate entity is off-screen
+	private double pixelsOffscreen(GameEntity e) {
+		
+		double x = processX(e.getXCoord());
+		double y = processY(e.getYCoord());
+		double w = RES.getWidth();
+		double h = RES.getHeight();
+		
+		double distN = -y;
+		double distS = y-h;
+		double distE = -x;
+		double distW = x-w;
+		
+		double toReturn = distN;
+		double[] dists = new double[] {distS, distE, distW};
+		
+		for(double d : dists)
+			if(Math.abs(d) < Math.abs(toReturn))
+				toReturn = d;
+	
+		return toReturn;
 	}
 	
 	

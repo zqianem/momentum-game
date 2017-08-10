@@ -53,6 +53,10 @@ public class GameLevel implements Cloneable{
 			return toReturn / mySet.size();
 		}
 		
+		public Set<GameEntity> getSet(){
+			return mySet;
+		}
+		
 		public Trackees clone() {
 			Trackees c = new Trackees();
 			
