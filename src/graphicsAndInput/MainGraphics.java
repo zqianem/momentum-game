@@ -33,6 +33,8 @@ public class MainGraphics extends JLayeredPane implements Runnable{
 	private double xOffset;
 	private double yOffset;
 	
+	private double zoomSpeed;
+	
 	private GameEnvironment myEnviron;
 	private boolean running;
 	private Thread animator;
@@ -99,6 +101,7 @@ public class MainGraphics extends JLayeredPane implements Runnable{
 		zoom = myEnviron.getLevel().getZoom();
 		xOffset = myEnviron.getLevel().getXOffset();
 		yOffset = myEnviron.getLevel().getYOffset();
+		zoomSpeed = 0.001;
 	}
 	
 	private void updateDisplaySettingsFromTrackee(){
@@ -181,6 +184,7 @@ public class MainGraphics extends JLayeredPane implements Runnable{
 
 		drawGUI(g2);
 	    
+		updateZoom();
 	}
 	
 	private void drawEntity(Graphics2D g2, GameEntity e){
@@ -348,14 +352,13 @@ public class MainGraphics extends JLayeredPane implements Runnable{
 				b = " " + b;
 			String b2 = "Block Sides: " + b;
 			
-			GameEntity t = (GameEntity) myEnviron.getLevel().getTrackees().getSet().toArray()[1];
 			
 //			if(pixelsOffscreen(t) >= 0)
 //				g2.drawString("Trackee is off screen", xPos-400, yPos);
 //			else
 //				g2.drawString("Trackee is on screen", xPos-400, yPos);
 			
-			g2.drawString(""+pixelsOffscreen(t), xPos-400, yPos);
+			g2.drawString(""+maxPixelsOffscreen(), xPos-400, yPos);
 			
 			g2.drawString(f2, xPos, yPos);
 			g2.drawString(e2, xPos-60, yPos + 25);
@@ -433,6 +436,25 @@ public class MainGraphics extends JLayeredPane implements Runnable{
 				toReturn = d;
 	
 		return toReturn;
+	}
+	
+	// the distance the furthest trackee is offscreen
+	private double maxPixelsOffscreen() {
+		Set<GameEntity> es = myEnviron.getLevel().getTrackees().getSet();
+		double max = pixelsOffscreen((GameEntity) es.toArray()[0]);
+		for(GameEntity e : es) {
+			double dist = pixelsOffscreen(e);
+			if(dist > max)
+				max = dist;
+		}
+		return max;
+	}
+	
+	private void updateZoom() {
+		double m = maxPixelsOffscreen();
+		
+		if(m > 0)
+			zoom -= zoomSpeed;
 	}
 	
 	
