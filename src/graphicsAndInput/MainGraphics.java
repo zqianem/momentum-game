@@ -101,7 +101,7 @@ public class MainGraphics extends JLayeredPane implements Runnable{
 		zoom = myEnviron.getLevel().getZoom();
 		xOffset = myEnviron.getLevel().getXOffset();
 		yOffset = myEnviron.getLevel().getYOffset();
-		zoomSpeed = 0.001;
+		zoomSpeed = 0.01;
 	}
 	
 	private void updateDisplaySettingsFromTrackee(){

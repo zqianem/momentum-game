@@ -15,7 +15,7 @@ public class TestLevel extends GameLevel{
 	public TestLevel(){
 		
 		displayScore = false;
-		zoom = 0.75;
+		zoom = 2;
 		environmentSize = new Dimension(3200, 2000);
 
 		GameEntity e2 = new StMV2("heyo", 800, 550, 2);
