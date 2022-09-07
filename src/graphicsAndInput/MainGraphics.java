@@ -108,7 +108,7 @@ public class MainGraphics extends JLayeredPane implements Runnable{
 		
 		Trackees e = myEnviron.getLevel().getTrackees();
 		
-		if(e == null)
+		if(e == null || e.getSet().size() == 0)
 			return;
 		
 		double width = myEnviron.getDimensions().getWidth();
@@ -441,6 +441,8 @@ public class MainGraphics extends JLayeredPane implements Runnable{
 	// the distance the furthest trackee is offscreen
 	private double maxPixelsOffscreen() {
 		Set<GameEntity> es = myEnviron.getLevel().getTrackees().getSet();
+        if (es.size() == 0) return 0;
+
 		double max = pixelsOffscreen((GameEntity) es.toArray()[0]);
 		for(GameEntity e : es) {
 			double dist = pixelsOffscreen(e);
