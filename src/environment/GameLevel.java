@@ -99,15 +99,15 @@ public class GameLevel implements Cloneable{
 	}
 	
 	public List<GameEntity> getEntitiesAtTick(long t){
-		return myEntityTimeMap.get(new Long(t));
+		return myEntityTimeMap.get(t);
 	}
 	
 	public List<GameEvent> getEventsAtTick(long t){
-		return myEventTimeMap.get(new Long(t));
+		return myEventTimeMap.get(t);
 	}
 	
 	public List<GameBlock> getBlocksAtTick(long t){
-		return myBlockTimeMap.get(new Long(t));
+		return myBlockTimeMap.get(t);
 	}
 	
 	public Trackees getTrackees(){return myTrackees;}

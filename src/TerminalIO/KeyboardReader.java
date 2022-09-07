@@ -59,7 +59,7 @@ public class KeyboardReader{
       System.out.print (prompt);
       try {
          s = (buffer.readLine()).trim();
-         value = (new Integer(s)).intValue();
+         value = Integer.parseInt(s);
       }catch (Exception e){
          System.out.println
          ("\n\nError: your input doesn't represent a valid integer value\n");
@@ -88,7 +88,7 @@ public class KeyboardReader{
       System.out.print (prompt);
       try {
          s = (buffer.readLine()).trim();
-         value = (new Double(s)).doubleValue();
+         value = Double.parseDouble(s);
       }catch (Exception e){
          System.out.println
          ("\n\nError: your input doesn't represent a valid double value\n");
