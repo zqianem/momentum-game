@@ -358,7 +358,7 @@ public class MainGraphics extends JLayeredPane implements Runnable{
 //			else
 //				g2.drawString("Trackee is on screen", xPos-400, yPos);
 			
-			g2.drawString(""+maxPixelsOffscreen(), xPos-400, yPos);
+//			g2.drawString(""+maxPixelsOffscreen(), xPos-400, yPos);
 			
 			g2.drawString(f2, xPos, yPos);
 			g2.drawString(e2, xPos-60, yPos + 25);
