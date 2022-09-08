@@ -24,9 +24,9 @@ public class RunGame {
 			System.out.print("Welcome (back) to the Momentum Game Menu! \n" +
 							 "\n" +
 						     "Please input one of the following: \n" +
-							 "0 to load single-player (bit laggy)\n" +
-						     "1 to load two-player co-op (also bit laggy)\n" +
-						     "2 to load two-player vs (actuallly runs well)\n" +
+							 "0 to load single-player \n" +
+						     "1 to load two-player co-op \n" +
+						     "2 to load two-player vs \n" +
 						     "3 to load three-player vs \n" +
 						     "-1 to exit                                "); 
 			menuInput = reader.readInt("Input: ");
@@ -36,7 +36,7 @@ public class RunGame {
 			
 			switch(menuInput){
 			case 0:
-				myLevel = new TestLevel();
+				myLevel = new SinglePlayer();
 				break;
 			case 1:
 				myLevel = new TwoPlayerCoop();
@@ -79,7 +79,7 @@ public class RunGame {
 	    	java.awt.EventQueue.invokeLater(new Runnable() {
 	    	    public void run() {
 	    	    	 //Create and set up the window.
-	    	        JFrame frame = new JFrame("Momentum Game by Michael Zhan (For Lack of a Better Title)");
+	    	        JFrame frame = new JFrame("Momentum Game");
 	    	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    	        frame.setResizable(false);
 	    	        frame.setLayout(null);

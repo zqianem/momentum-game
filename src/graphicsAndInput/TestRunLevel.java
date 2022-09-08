@@ -32,7 +32,7 @@ public class TestRunLevel {
     	java.awt.EventQueue.invokeLater(new Runnable() {
     	    public void run() {
     	    	 //Create and set up the window.
-    	        JFrame frame = new JFrame("FLoaPT Engine by Michael Zhan");
+    	        JFrame frame = new JFrame("FLoaPT Engine");
     	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	        frame.setResizable(false);
     	        frame.setLayout(null);
